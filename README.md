@@ -1,8 +1,8 @@
 # 🌵 **simplellm**
 
-🌵 **simplellm** is a (in-progress) library for developing and training Transformer Language Models
-with the goal of being as simple as possible. A repository of my quest to build high performing models
-and training infrastructure as simply as possible.
+🌵 **simplellm** is a (in-progress) library for developing and training Transformer Language Models. 
+It is a living artifact of my quest to build high performing models and training infrastructure as simply
+as possible.
 
 ## Project Struture
 🌵 simplellm is split into sub-directories: ```modeling``` and ```training```.
