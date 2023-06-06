@@ -1,20 +1,20 @@
 # 🌵 **simplellm**
 
 🌵 **simplellm** is a (in-progress) library for developing and training Transformer Language Models
-with the goal of being as simple as possible.
+with the goal of being as simple as possible. A repository of my quest to build high performing models
+and training infrastructure as simply as possible.
 
-## Project Goals
+## Project Struture
+🌵 simplellm is split into sub-directories: ```modeling``` and ```training```.
 
-Build super simple abstractions for:
- - Performant layer and model definitions
- - Performant training loops
- - Performant data pipelines
- - Parameter Efficient Fine-Tuning Techniques
+### Modeling
+Model building blocks and their supporting code live in the ```modeling``` directory. Components can exist
+at multiple levels of abstraction; from operations like ```ALiBiAttention``` to the ```PerceiverBlock```.
+This is to facilitate maximal reuse across projects by capturing components defined at varying levels
+of abstraction. Fused kernels and quantized implementations will also find their way into this directory.
 
-The first model to replicate in simplellm will be [MPT-7B](https://www.mosaicml.com/blog/mpt-7b)
-which has a few interesting architecture details:
- - Attention with Linear Biases ([ALiBi](https://arxiv.org/abs/2108.12409))
- - [FlashAttention](https://arxiv.org/abs/2205.14135) (requires custom Triton kernel for ALiBi)
- - Embedding Layer Gradient Shrink (page 7 of [GLM-130B](https://arxiv.org/abs/2210.02414) paper)
-
-Will also most likely be adopting some concepts from MosaicML's [Composer library](https://github.com/mosaicml/composer) at some point.
+### Training
+The ```training``` directory contains code for a ```Trainer``` object which defines an event loop surrounding
+the training process. Similar to fastai, PyTorch Lightning, and MosaicML Composer, the 🌵 simplellm
+```Trainer``` utilizes externally defined callback functions which are invoked at specified points in the
+lifecycle of the training process. The ```Trainer``` object will also support DDP and FSDP training.
