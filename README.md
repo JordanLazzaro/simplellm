@@ -4,7 +4,7 @@
 It is a living artifact of my quest to build high performing models and training infrastructure as simply
 as possible.
 
-## Project Struture
+## Project Structure
 🌵 simplellm is split into sub-directories: ```modeling``` and ```training```.
 
 ### Modeling
